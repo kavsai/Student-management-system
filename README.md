@@ -5,6 +5,19 @@ Student Management System using Spring Boot
 A Spring Boot + MySQL REST API project for managing students, courses, attendance, and marks.
 This system is designed as a backend foundation for a full-stack academic management platform.
 
+⭐# 📚 Smart Student Management System
+
+![Java](https://img.shields.io/badge/Java-17%2B-orange?logo=java)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green?logo=springboot)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?logo=mysql)
+![Maven](https://img.shields.io/badge/Maven-Build-red?logo=apachemaven)
+![Postman](https://img.shields.io/badge/Postman-API-orange?logo=postman)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Backend](https://img.shields.io/badge/Backend-REST%20API-blue)
+
 🚀 Project Overview
 
 The Smart Student Management System is a backend application that provides APIs to manage student academic data efficiently. It follows a layered architecture using Controller → Service → Repository → Database.
