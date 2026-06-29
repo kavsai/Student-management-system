@@ -191,10 +191,15 @@ function loadDashboard() {
 
 
 // ====================== AUTO LOAD ======================
+
 window.onload = function () {
-    getStudents();
-    getCourses();
-    getAttendance();
-    getMarks();
-    loadDashboard();
+
+    const page = document.body.getAttribute("data-page");
+
+    if (page === "students") getStudents();
+    else if (page === "courses") getCourses();
+    else if (page === "attendance") getAttendance();
+    else if (page === "marks") getMarks();
+    else if (page === "dashboard") loadDashboard();
+
 };
