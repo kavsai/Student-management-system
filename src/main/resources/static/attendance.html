@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Attendance Management System</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="courses.html">Courses</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="marks.html">Marks</a>
+</nav>
+
+<div class="container">
+
+    <h2>Mark Attendance</h2>
+
+    <input type="number" id="studentId" placeholder="Student ID">
+    <input type="date" id="attendanceDate">
+    <input type="text" id="status" placeholder="Present / Absent">
+
+    <button onclick="addAttendance()">Save Attendance</button>
+
+    <h2>Attendance List</h2>
+    <div id="attendanceList"></div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

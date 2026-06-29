@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Marks Management System</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="courses.html">Courses</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="marks.html">Marks</a>
+</nav>
+
+<div class="container">
+
+    <h2>Add Marks</h2>
+
+    <input type="number" id="marksStudentId" placeholder="Student ID">
+    <input type="text" id="subject" placeholder="Subject">
+    <input type="number" id="marks" placeholder="Marks">
+
+    <button onclick="addMarks()">Save Marks</button>
+
+    <h2>Marks List</h2>
+    <div id="marksList"></div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
