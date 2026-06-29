@@ -140,3 +140,146 @@ Tech: Spring Boot + MySQL
 ✔ Backend Completed
 ✔ APIs Tested via Postman
 Built with passion for learning and real-world backend development. More features coming soon!
+
+## 💡 Important Code Snippets;
+1)Controller Layer:##(Attendance)
+package com.example.studentmanagementsystem.controller;
+
+import com.example.studentmanagementsystem.entity.Attendance;
+import com.example.studentmanagementsystem.service.AttendanceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/attendance")
+public class AttendanceController {
+
+    @Autowired
+    private AttendanceService attendanceService;
+
+    // Create Attendance
+    @PostMapping
+    public Attendance createAttendance(@RequestBody Attendance attendance) {
+        return attendanceService.saveAttendance(attendance);
+    }
+
+    // Get All Attendance
+    @GetMapping
+    public List<Attendance> getAllAttendance() {
+        return attendanceService.getAllAttendance();
+    }
+
+    // Get Attendance By ID
+    @GetMapping("/{id}")
+    public Attendance getAttendanceById(@PathVariable Long id) {
+        return attendanceService.getAttendanceById(id);
+    }
+
+    // Update Attendance
+    @PutMapping("/{id}")
+    public Attendance updateAttendance(@PathVariable Long id,
+                                       @RequestBody Attendance attendance) {
+        return attendanceService.updateAttendance(id, attendance);
+    }
+
+    // Delete Attendance
+    @DeleteMapping("/{id}")
+    public void deleteAttendance(@PathVariable Long id) {
+        attendanceService.deleteAttendance(id);
+    }
+}
+
+
+2)Service Layer:
+package com.example.studentmanagementsystem.service;
+
+import com.example.studentmanagementsystem.entity.Attendance;
+import com.example.studentmanagementsystem.repository.AttendanceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AttendanceService {
+
+    @Autowired
+    private AttendanceRepository repository;
+
+    // Create Attendance
+    public Attendance saveAttendance(Attendance attendance) {
+        return repository.save(attendance);
+    }
+
+    // Get All Attendance
+    public List<Attendance> getAllAttendance() {
+        return repository.findAll();
+    }
+
+    // Get Attendance By ID
+    public Attendance getAttendanceById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    // Update Attendance
+    public Attendance updateAttendance(Long id, Attendance attendance) {
+
+        Attendance existing = repository.findById(id).orElse(null);
+
+        if (existing != null) {
+            existing.setStudentId(attendance.getStudentId());
+            existing.setAttendanceDate(attendance.getAttendanceDate());
+            existing.setStatus(attendance.getStatus());
+
+            return repository.save(existing);
+        }
+
+        return null;
+    }
+
+    // Delete Attendance
+    public void deleteAttendance(Long id) {
+        repository.deleteById(id);
+    }
+}
+
+🗄️ 3. Repository Layer:
+
+package com.example.studentmanagementsystem.repository;
+
+import com.example.studentmanagementsystem.entity.Attendance;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
+}
+
+🧱 4. Entity Layer:
+package com.example.studentmanagementsystem.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+public class Attendance {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long studentId;
+    private java.time.LocalDate attendanceDate;
+    private String status;
+}
+
+⚙️ 5. Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/studentdb
+spring.datasource.username=root
+spring.datasource.password=Kaviselva@4
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
